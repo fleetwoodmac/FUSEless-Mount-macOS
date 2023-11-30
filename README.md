@@ -91,3 +91,10 @@ Example for starting VM:
 <img width="608" alt="image" src="https://github.com/fleetwoodmac/FUSEless-Mount-macOS/assets/69140036/0d2e65b8-0cfe-4486-a87f-eed4100fdc4b">
 
 You can go further and create a separate application for stopping the VM and closing Microsoft Remote Desktop, and assign both to keyboard shortcuts, see [here](https://appleinsider.com/articles/18/03/14/how-to-create-keyboard-shortcuts-to-launch-apps-in-macos-using-automator) for an example.
+
+
+# Closing Notes
+This was the most straightforward way I could come up with to achieve what I wanted with on macOS. This was inspired by this [post](https://forum.restic.net/t/restic-mount-on-osx-and-windows-in-2021/4487/3). Things that could be done to improve this include setting up a BASH script to do much of the setup autimatically, or some of the alternatives/tweaks listed below.
+- This could potentially be even lighter-weight if you are more comfortable doing everything without a GUI. Skip the LXDE and RDP stuff, and just do everything from CLI!
+- [Macpine](https://github.com/beringresearch/macpine) is another alternative that uses alpine linux VMs instead of Ubuntu, which has the potential to be even lighter on CPU, RAM, and disk usage.
+- Docker using bind mounts(?) may be another way to achieve this. See [restic](https://forum.restic.net/t/cannot-mount-on-macos-with-macfuse-4-x/3338/5). Could be adapted for Borg by someone motivated.
