@@ -1,4 +1,4 @@
-# FUSEless-Mount-macOS
+# Mounting Borg backups or Restic repos without FUSE in macOS
 Workaround method for mounting Borg or Restic repos in macOS without FUSE.
 
 # Preliminary Notes
