@@ -4,7 +4,7 @@ Workaround method for mounting Borg or Restic repos in macOS without FUSE.
 # Preliminary Notes
 [Restic](https://restic.net/) and [BorgBackup](https://www.borgbackup.org/) are probably the most stable and well-developed FOSS backup tools for macOS that have a mounting capability for backup browsing. However, both use macFUSE for mounting on macOS, which requires reducing security due to its system kext requirement. 
 
-Until Borg and restic implement an kextless alternative like [FUSE-T](https://www.fuse-t.org/), or implement an alternative method of mounting like usingwebDAV (example: Cryptomator), [Kopia](https://kopia.io/) is a great alternative if you are willing to use something that is still in active development (but by most accounts, completely fine, and being commercially supported/deployed), as it supports [WebDAV mounting](https://kopia.io/docs/reference/command-line/common/mount/) of snapshots. 
+Until Borg and restic implement an kextless alternative like [FUSE-T](https://www.fuse-t.org/), or implement an alternative method of mounting like using webDAV (example: Cryptomator), [Kopia](https://kopia.io/) is a great alternative if you are willing to use something that is still in active development (but by most accounts, completely fine, and being commercially supported/deployed), as it supports [WebDAV mounting](https://kopia.io/docs/reference/command-line/common/mount/) of snapshots. 
 
 For those that do still want to use Restic or Borg and do not want to change the required security settings needed to make macFUSE work on apple silicon (M1, etc.), the easiest ways to do so are using things like [ResticBrowser](https://github.com/emuell/restic-browser) and [Borg-Repo-Explorer](https://github.com/Netruk44/borg-repository-explorer), which are viable ways to browse backups with minimal effort, but are not a full solution to be able to search quickly and preview files yet. 
 
@@ -16,7 +16,7 @@ This hacky workaround uses a lightweight Linux VM to handle mounting and browsin
 
 ### Step 1: Create and configure Multipass VM
 1. Download and install the [Multipass](https://multipass.run/download/macos) package. Multipass is a super simple CLI tool by Canonical (makers of Ubuntu) that lets you spin up really lightweight ubuntu VMs on macOS.
-2. Open Terminal, and create an ubunutu VM using `multipass launch --disk 10G --name name-here`.
+2. Open Terminal, and create an ubuntu VM using `multipass launch --disk 10G --name name-here`.
    - `10G` is the disk size you are alloting for the VM, and can be changed to anything. I suggest 10G just in case, but it will not take 10G of space immediately and just sets the limit for it to grow up to 10G in size.
    -  `name-here` is whatever you want to name the VM. Multipass will download a minimal Ubuntu image, and set up the VM.
 3. Once done run `multipass shell name-here`. This command opens up a command-line instance for the Ubuntu VM. Terminal should say something like `ubuntu@name-here` or whatever you named the VM now.
@@ -72,7 +72,7 @@ This will be done within the VM.
 
 For restic, see their docs for `restic mount` [here](https://restic.readthedocs.io/en/latest/050_restore.html).
 
-For Borg, see their docs for `borg mount` [here](https://borgbackup.readthedocs.io/en/stable/usage/mount.html). You can also use Vorta (see [here](https://vorta.borgbase.com/).
+For Borg, see their docs for `borg mount` [here](https://borgbackup.readthedocs.io/en/stable/usage/mount.html). You can also use Vorta (see [here](https://vorta.borgbase.com/)).
 
 ## Restoring/Moving files
 If you are trying to just retrieve a few files out of your restic/borg backup, mounting within the VM and moving your desired files to the shared directory works fine.
