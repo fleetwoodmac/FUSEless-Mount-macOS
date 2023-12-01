@@ -10,7 +10,17 @@ For those that do still want to use Restic or Borg and do not want to change the
 
 This hacky workaround uses a lightweight Linux VM to handle mounting and browsing backups virtually, then transferring files using a VM-Host shared directory.
 
-# Method
+# Method For macOS 13 and Above (Ventura, Sonoma)
+This method uses Lima and VirtioFS. 
+
+## Setup
+
+### Step 1: Create and configure Lima VM
+// to be updated
+
+
+# Method For macOS 12 and Below (Monterey/Big Sur/etc.)
+This method uses Multipass and SSHFS. 
 
 ## Setup
 
