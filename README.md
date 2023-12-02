@@ -16,8 +16,21 @@ This method uses Lima and VirtioFS.
 ## Setup
 
 ### Step 1: Create and configure Lima VM
-// to be updated
 
+// brief notes to be updated
+1. install lima
+2. create ubuntu.yaml (example to be uploaded to repo)
+3. run `limactl create --name ubuntu --cpus=2 --memory=2 --disk=10 /path/to/ubuntu/yaml`
+4. run `limactl start ubuntu`, `limactl shell ubuntu`
+5. `sudo apk update && sudo apk upgrade -y`
+6. `sudo apt-get intall ubuntu-desktop`
+7. `sudo passwd root` --> change root pass
+8. restart VM
+9. create random user per ubuntu desktop's wished :(
+10. allow root login via gui per [here](https://linuxconfig.org/gnome-login-as-root)
+11. login as root, `sudo apt install borgbackup`, `sudo apt install vorta`
+12. may still have to mess around with vorta per [here](https://discussion.fedoraproject.org/t/how-to-launch-vorta-as-root-from-launcher/86790/7)
+//brief notes to be updated
 
 # Method For macOS 12 and Below (Monterey/Big Sur/etc.)
 This method uses Multipass and SSHFS. 
