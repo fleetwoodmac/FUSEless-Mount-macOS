@@ -29,7 +29,9 @@ This method uses Lima and VirtioFS.
 9. create random user per ubuntu desktop's wished :(
 10. allow root login via gui per [here](https://linuxconfig.org/gnome-login-as-root)
 11. login as root, `sudo apt install borgbackup`, `sudo apt install vorta`
-12. may still have to mess around with vorta per [here](https://discussion.fedoraproject.org/t/how-to-launch-vorta-as-root-from-launcher/86790/7)
+12. if mounting network SMB drive, install `sudo apt get cifs-utils` and modify /etc/fstab per Herbertech's [video](https://www.youtube.com/watch?v=v2WMnZoiGog), run `sudo mount -a`
+13. if mounting local, modify, share by modifying ubuntu.yaml
+14. may still have to mess around with vorta per [here](https://discussion.fedoraproject.org/t/how-to-launch-vorta-as-root-from-launcher/86790/7)
 //brief notes to be updated
 
 # Method For macOS 12 and Below (Monterey/Big Sur/etc.)
