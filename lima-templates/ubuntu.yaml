@@ -1,0 +1,26 @@
+# This template requires Lima v0.7.0 or later.
+
+vmType: "vz"
+images:
+# Try to use release-yyyyMMdd image if available. Note that release-yyyyMMdd will be removed after several months.
+- location: "https://cloud-images.ubuntu.com/releases/22.04/release-20231026/ubuntu-22.04-server-cloudimg-amd64.img"
+  arch: "x86_64"
+  digest: "sha256:054db2d88c454bb0ad8dfd8883955e3946b57d2b0bf0d023f3ade3c93cdd14e5"
+- location: "https://cloud-images.ubuntu.com/releases/22.04/release-20231026/ubuntu-22.04-server-cloudimg-arm64.img"
+  arch: "aarch64"
+  digest: "sha256:eafa7742ce5ff109222ea313d31ea366d587b4e89b900b11d8285ae775dfe8c3"
+# Fallback to the latest release image.
+# Hint: run `limactl prune` to invalidate the cache
+- location: "https://cloud-images.ubuntu.com/releases/22.04/release/ubuntu-22.04-server-cloudimg-amd64.img"
+  arch: "x86_64"
+- location: "https://cloud-images.ubuntu.com/releases/22.04/release/ubuntu-22.04-server-cloudimg-arm64.img"
+  arch: "aarch64"
+  
+mountType: "virtiofs"
+mounts:
+- location: "/path/to/dir/on/host"
+  mountPoint: /path/to/mount/in/vm
+  writable: true
+
+video:
+  display: default

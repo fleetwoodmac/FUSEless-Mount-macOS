@@ -1,0 +1,59 @@
+# This template requires Lima v0.7.0 or later.
+# Using the Alpine 3.18 aarch64 image with vmType=vz requires macOS Ventura 13.3 or later.
+
+vmType: "vz"
+images:
+- location: "https://github.com/lima-vm/alpine-lima/releases/download/v0.2.32/alpine-lima-std-3.18.0-x86_64.iso"
+  arch: "x86_64"
+  digest: "sha512:7b00fff78736a27a24e4a7de5f28037e9c7cf0fc539a33ec551c6ac619eb54237b5f25bfa35512fa7233cf23396dc249592710ef9150f619afa15267f9c8cbd4"
+- location: "https://github.com/lima-vm/alpine-lima/releases/download/v0.2.32/alpine-lima-std-3.18.0-aarch64.iso"
+  arch: "aarch64"
+  digest: "sha512:bf23a22e05854670eef74d9bfad056caa249832f22d5594eb6bb02fa9aae109d33c764242f862d48de5b6715c4792a3ee29c19888a0711fb27113ba5cf1ccf21"
+
+  
+mountType: "virtiofs"
+mounts:
+- location: "/path/to/dir/on/host"
+  mountPoint: /path/to/mount/on/vm
+  writable: true
+
+provision:
+# `system` is executed with the root privilege
+- mode: system
+  script: |
+    #!/bin/bash
+    sudo apk update && sudo apk upgrade -y
+    sudo apk add restic 
+    sudo apk add fuse
+    sudo apk add cifs-utils
+    sudo apk add sudo
+    setup-xorg-server
+    sudo apk add kbd
+    sudo apk add xf86-input-libinput
+    sudo apk add xf86-input-mouse xf86-input-keyboard
+    sudo apk add lxqt-desktop lximage-qt obconf-qt pavucontrol-qt screengrab arandr sddm
+    sudo apk add elogind polkit-elogind
+    sudo apk add gvfs-smb
+    sudo apk add gvfs-fuse
+    sudo apk add fuse-openrc
+    sudo apk add adwaita-icon-theme
+    sudo apk add gedit
+    sudo apk add libreoffice-writer
+    sudo apk add libreoffice-calc
+    sudo apk add xpdf
+    sudo rc-service fuse start
+    sudo rc-update add fuse
+    sudo rc-update add elogind
+    sudo rc-service elogind start
+    sudo rc-service dbus start
+    sudo rc-update add dbus
+    sudo rc-service sddm start
+    sudo rc-update add sddm
+    
+video:
+  display: default
+# The built-in containerd installer does not support Alpine currently.
+# Hint: use the "rd" ISO instead of the "std" ISO to enable containerd: https://github.com/lima-vm/alpine-lima/releases/
+containerd:
+  system: false
+  user: false
