@@ -100,7 +100,7 @@ For restic, see their docs for `restic mount` [here](https://restic.readthedocs.
 For Borg, see their docs for `borg mount` [here](https://borgbackup.readthedocs.io/en/stable/usage/mount.html). Vorta is unforunately not available for Alpine Linux officially. 
 
 ### Manually Mounting
-If you choose not to make a mount script, you can just use the terminal inside the VM (QTerminal from the menu button) and mount via command line as you normally would. See the docs linked above.
+If you choose not to make a mount script, you can just use the terminal inside the VM (QTerminal from the menu button) and mount via command line as you normally would. See the docs linked above. **Make sure to run all commands as sudo, or you may get permissions errors.**
 
 
 ### Copying files to the host
