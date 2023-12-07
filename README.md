@@ -61,6 +61,8 @@ This method uses Lima, QEMU, Alpine Linux, and VirtFS-9P.
    - BorgBackup users should download  `alpine-virt9p-borg.yaml`. Restic users should download  `alpine-virt9p-restic.yaml`.
 2. Follow the rest of the steps in the method for macOS13 and above.
 
+I had some issues with this, such as the mouse not showing up sometimes. If you are having issues, use one of the Ubuntu methods in [DeprecatedMethods](DeprecatedMethods.md)
+
 # Part 2)  Next, configure a one-click startup 'button' and auto-mount script. 
 
 By now, you have a really lightweight VM that has all the tools you need to mount backups and 
