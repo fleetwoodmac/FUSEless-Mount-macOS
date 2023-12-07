@@ -18,7 +18,7 @@ This method uses Lima with Apple's Virtualization.framework (VZ), Alpine Linux a
 
 ### Step 1: Download and configure Lima VM template
 1. Download one of the  `alpine-virtiofs-*.yaml` config file from this repository to a directory of your choice.
-   - This is a configuration file will install Alpine Linux with the LXQt desktop environment and a few packages like LibreOffice Writer/Calc, xpdf, GEdit and mpv so that you can look at files of different types in your backup. 
+   - This is a configuration file will install Alpine Linux with the LXQt desktop environment and a few packages like LibreOffice Writer/Calc, xpdf, and GEdit so that you can look at files of different types in your backup. 
    - BorgBackup users should download  `alpine-virtiofs-borg.yaml`. Restic users should download  `alpine-virtiofs-restic.yaml`.
 2. Open up the .yaml file in a text editor. We need to configure a shared directory location between VM and the host to be able extract files from your backups to.
    - go to the "mounts" section in the file
@@ -29,7 +29,7 @@ This method uses Lima with Apple's Virtualization.framework (VZ), Alpine Linux a
 3. Scroll to the `provision` section, and under the `script` portion, **under** `sudo rc-update add sddm` (Do not change), make any additional folders you want by adding in lines of `sudo mkdir /path/to/directory/in/vm`.
   - Add a dedicated folder to temporarily mount backups to, for example `sudo mkdir /mnt/BackupMountPoint`.
   - If you use a NAS on your network to store your backups using an SMB share, or a remote location that you mount with rclone, you can make a folder in which to mount them in, like `sudo mkdir /mnt/NASMountPoint`.
-3. Feel free to add/delete packages as you wish from the `provision` > `script` section of the yaml file you download or just leave it as is. For example, you may want to add rclone if you store and mount backups from a remote location.
+3. Feel free to add/delete packages as you wish from the `provision` > `script` section of the yaml file you download or just leave it as is. For example, you may want to add rclone if you store and mount backups from a remote location or mpv and some codecs if you want to view videos.
    - If you are mounting network storage of some kind, you may need to add some packages. See the "auto-mounting USB drives" and "network browsing" sections of the [LXQt Alpine Wiki page](https://wiki.alpinelinux.org/wiki/LXQt). Add any gvfs package that you need by adding a line like `sudo apk add ...`. For example, included already are the tools necessary for mounting SMB shares, `sudo apk add gvfs-smb`, but you may want to mount NFS shares so you may need to add `sudo apk add gvfs-nfs`.
 4.  Save and close.
 
