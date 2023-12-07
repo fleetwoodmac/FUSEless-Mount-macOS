@@ -11,11 +11,31 @@ For those that do still want to use Restic or Borg and do not want to change the
 This hacky workaround uses a lightweight Linux VM to handle mounting and browsing backups virtually, then transferring files using a VM-Host shared directory.
 
 # Method For macOS 13 and Above (Ventura, Sonoma)
-This method uses Lima and VirtioFS. 
+This method uses Lima, Alpine Linux and VirtioFS. 
 
 ## Setup
 
-### Step 1: Create and configure Lima VM
+### Create and configure Lima VM
+1. Open Terminal and download/install [Lima](https://github.com/lima-vm/lima) via [homebrew](https://brew.sh) using `brew install lima`. Lima is a lightweight virtualizer for macOS that lets you easily spin up linux VMs..We are going to be spinning up a really small Alpine Linux VM to achieve what we want/
+2. Download one of the  `alpine-*.yaml` config file from this repository to a directory of your choice.
+   - This is a configuration file will install Alpine Linux with the LXQt desktop environment and a few packages like LibreOffice Writer/Calc, xpdf, GEdit and mpv so that you can look at files of different types in your backup. Feel free to add/delete packages as you wish from the `provision` > `script` section of the yaml file you download.
+   - BorgBackup users should download  `alpine-borg.yaml`. Restic users should download  `alpine-restic.yaml`. 
+3.  `cd` to the the directory you downloaded the .yaml file to and then run `limactl create --cpus=2 --memory=2 --disk=10 --name=name-here /path/to/alpine-*.yaml`. Hit enter to select Proceed with current configuration, and Lima will create an Alpine Linux VM based on the .yaml file.
+   - Tweak the number of cpu cores, memory and disk size how you see fit. See [Lima's documentation](https://lima-vm.io/docs/reference/limactl_create/) for notes.
+   - Set `--name` to what you want the VM instance to be called, like `alp`
+   - `/path/to/alpine-*.yaml` is the filepath to where you downloaded whichever .yaml file you chose
+4. run `limactl start name-here` where name-here is whatever you named the instance. This will launch your instance and open a separate window with the linux VM. **Closing this window stops the VM, so do not close it unless you want to fully shut down the VM**. Leave the terminal window from which you are running commands open as well. 
+   - The initial setup will take a bit as your VM instance downloads all the packages and sets up the GUI/desktop environment/applications. You will eventually see the LXQt login screen come up. Take note of the username on the login window. It should be your Mac's login username or something similar.
+5. From the terminal window you left open, run `limactl shell name-here`. This opens an ssh instance to the VM from which you can run commands. you should see something like `lima-name-here:~$` in the terminal window.
+    - Run `sudo passwd yourusername` where yourusername is the username you saw on the LXQt login page. This will prompt you to set a password. Set it to something.
+     -  Run `sudo passwd root`. This is setting the root password just in case. Set it to something else.
+6. Now go back to the window showing the Linux VM and enter the password you set for your username. This will log you into the VM. You should see a linux GUI desktop now.
+7. We now have to just make sure icons show up properly.
+   - First hit the menu button in the bottom left (like the windows start button) then go to Preferences > LXQt Settings > LXQt Configuration Center. Click appearance and go to Icons Them, and hit Adwaita and hit apply. This will make icons actually appear. Close these windows.
+   - Next go the the menu button > Accessories > PCManFM-Qt. This will open up the File manager.
+   - Go to Tools > Open Tab in Root Instance. This will open up a new window that should say "Root Instance" somewhere. Right Click on the top where the file path is show and hit "edit path". navigate to `/home/yourusername`.
+   - Go to View > Show Hidden. This should show some new folders. Copy the `.config` one that pops up. Go to the address bar and navigate to `/root`. Paste the `.config` folder there. Tick Apply to all files and hit overwrite. Close the Root instance window, and reopen a window in Root Instance. Icons should now also be showing in the Root instance window.
+- **PCManFM-QT Root Instance** windows are what you should use to browse your backup to avoid weird permission issues. 
 
 // brief notes to be updated
 1. install lima
