@@ -16,7 +16,7 @@ This hacky workaround uses a lightweight Linux VM to handle mounting and browsin
 ## Method For macOS 13 and Above (Ventura, Sonoma)
 This method uses Lima with Apple's Virtualization.framework (VZ), Alpine Linux and VirtioFS. Offers the best combination of file copying and low resource usage I could come up with. 
 
-### Step 1: Dowload and configure Lima VM template
+### Step 1: Download and configure Lima VM template
 1. Download one of the  `alpine-virtiofs-*.yaml` config file from this repository to a directory of your choice.
    - This is a configuration file will install Alpine Linux with the LXQt desktop environment and a few packages like LibreOffice Writer/Calc, xpdf, GEdit and mpv so that you can look at files of different types in your backup. 
    - BorgBackup users should download  `alpine-virtiofs-borg.yaml`. Restic users should download  `alpine-virtiofs-restic.yaml`.
@@ -54,9 +54,12 @@ This method uses Lima with Apple's Virtualization.framework (VZ), Alpine Linux a
 7. Shut off the VM by going to the menu button > Leave > Shutdown.
 
 ## Method For macOS 12 and Below (Monterey/Big Sur/etc.)
-This method uses Lima, Alpine Linux, and VirtFS-9P.
+This method uses Lima, QEMU, Alpine Linux, and VirtFS-9P.
 
-// To be updated
+1. Download one of the  `alpine-virt9p-*.yaml` config file from this repository to a directory of your choice.
+   - This is a configuration file will install Alpine Linux with the LXQt desktop environment and a few packages like LibreOffice Writer/Calc, xpdf, GEdit and mpv so that you can look at files of different types in your backup. 
+   - BorgBackup users should download  `alpine-virt9p-borg.yaml`. Restic users should download  `alpine-virt9p-restic.yaml`.
+2. Follow the rest of the steps in the method for macOS13 and above.
 
 # Part 2)  Next, configure a one-click startup 'button' and auto-mount script. 
 
