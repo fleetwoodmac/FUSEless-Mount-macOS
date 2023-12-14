@@ -1,7 +1,6 @@
 # Ubuntu Depracated methods
 This has some old methods using ubuntu with Lima/Multipass in case you are having issues the Alpine Linux ones.
-(see old-lima-templates folder for correct .yaml's)
-
+(see [old-lima-templates](old-lima-templates) for correct .yaml's)
 
 # Method For macOS 13 and Above (Ventura, Sonoma)
 This method uses Lima, Ubuntu and VirtioFS. 
