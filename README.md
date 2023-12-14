@@ -100,7 +100,7 @@ For restic, see their docs for `restic mount` [here](https://restic.readthedocs.
 For Borg, see their docs for `borg mount` [here](https://borgbackup.readthedocs.io/en/stable/usage/mount.html). 
 
 ### Manually Mounting
-If you choose not to make a mount script, you can just mount via command line as you normally would. While the VM is running, in a terminal window, run `limactl shell name-here`. This will open terminal instance inside the VM where you can run commands. See the docs linked above. **Make sure to run all commands as sudo, or you may get permissions errors.**
+If you choose not to make a mount script, you can just mount via command line as you normally would. While the VM is running, in a terminal window, run `limactl shell name-here`. This will open terminal instance inside the VM where you can run commands. See the docs linked above. **Make sure to run all commands as sudo, or you may get permissions errors.** To exit the ssh instance, just run `exit`.
 
 
 # Part 3) Browsing Backups, Previewing files in the backup, Copying files to the host
@@ -139,7 +139,7 @@ This command uses rsync to copy the desired file/directory to the VirtioFS/Virt-
 - But honestly, if you plan on extracting most, if not all files within a backup, it is much easier to just do this **natively** on macOS using Vorta for Borg/borg extract or restic restore rather than within the VM. 
 
 ## Stopping
-When done, disconnect your Cyberduck browser by either just closing the program or by going to the menu bar > Go > Disconnect. To stop the VM, in a terminal window, type `limactl stop name-here`.
+When done, disconnect your Cyberduck browser by either just closing the program or by going to the menu bar > Go > Disconnect. To stop the VM, in a terminal window, run `limactl stop name-here`.
 
 # Closing Notes
 This was the most straightforward way I could come up with to achieve what I wanted with on macOS. This was inspired by this [post](https://forum.restic.net/t/restic-mount-on-osx-and-windows-in-2021/4487/3). Things that could be done to improve this include setting up a BASH script to do much of the setup autimatically, or some of the alternatives/tweaks listed below.
