@@ -1,5 +1,5 @@
 # Alpine GUI Deprecated Methods
-(see old-lima-templates folder for correct .yaml's)
+(see [old-lima-templates](old-lima-templates) for correct .yaml's)
 
 # Mounting Borg backups or Restic repos without FUSE in macOS
 Workaround method for mounting Borg or Restic repos in macOS without FUSE. Specifically aimed for browsing backups to preview files within or restoring a portion of a backup rather than everything.
