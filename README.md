@@ -118,21 +118,21 @@ To preview files, you can use Cyberduck's Quick Look feature. This works especia
 
 ## Copying
 
-For small amounts of files/Files with smaller sizes:
+### For small amounts of files/Files with smaller sizes:
 
 Simply drag them from Cyberduck to whereever you want to copy the files to on macOS. This will transfer the files out of the VM via SFTP/SSHFS. This method is fast enough for most cases. 
 
-For larger amounts of files/files with larger sizes:
+### For larger amounts of files/files with larger sizes:
 
 In a terminal window, run `limactl shell name-here`, which will start a terminal instance to your VM (if you have configured an auto-start script similar to above, then there will already be one open). In Cyberduck, right click on the file/directory you wish to copy to the host and hit Info (or just use Cmd + I). In the window that pops up, under General, copy the filepath next to Where. 
 
-Go back to the terminal window and run an rsync command similar to `sudo rsync -r --info=progress2 /pasted/file/path/from/Cyberduck/ /path/to/shared/VM/host/directory`. 
-    - `/pasted/file/path/from/Cyberduck/` is where you can just paste the filepath you copied from Cyberduck (path to the files within your mounted backup)
-    - `/path/to/shared/VM/host/directory` is the path to the shared VM-Host directory within the VM that you configured in the .yaml file in Part 1, Step 1. 
+Go back to the terminal window and run an rsync command similar to `sudo rsync -r --info=progress2 /pasted/file/path/from/Cyberduck/ /path/to/shared/VM/host/directory`
+- `/pasted/file/path/from/Cyberduck/` is where you can just paste the filepath you copied from Cyberduck (path to the files within your mounted backup)
+- `/path/to/shared/VM/host/directory` is the path to the shared VM-Host directory within the VM that you configured in the .yaml file in Part 1, Step 1. 
 
 This command uses rsync to copy the desired file/directory to the VirtioFS/Virt-9P shared VM-Host directory, and show progress. It will be much faster than using SSHFS/SFTP. The file/directory will appear on macOS where you configured them to in the .yaml file from Part 1, Step 1. 
 
-For complete restores:
+### For complete restores:
 
 - see `restic restore` documentation [here](https://restic.readthedocs.io/en/latest/050_restore.html) or borg's restore options documentation [here](https://docs.borgbase.com/restore/borg/). and copy to the shared directory.
 
@@ -141,6 +141,5 @@ For complete restores:
 
 # Closing Notes
 This was the most straightforward way I could come up with to achieve what I wanted with on macOS. This was inspired by this [post](https://forum.restic.net/t/restic-mount-on-osx-and-windows-in-2021/4487/3). Things that could be done to improve this include setting up a BASH script to do much of the setup autimatically, or some of the alternatives/tweaks listed below.
-- This could potentially be even lighter-weight if you are more comfortable doing everything without a GUI. Skip the LXQt stuff by removing the provision section from the template and do everything from CLI. You just lose the ability to fully preview the content of files within a backup without first copying to the host machine. 
-- [Macpine](https://github.com/beringresearch/macpine), [OrbStack](https://orbstack.dev), and [Tart](https://tart.run) may be viable alternatives to Lima incase it is giving you a headache. Further, if you would be okay using Ubuntu specificially instead of Alpine, [Multipass](https://multipass.run) is an extremely easy way to get Ubuntu VMs running. It does not support VirtioFS yet, but I think they are actively working on implementing this and support Apple's Virtualization.framework instead of QEMU. See [DeprecatedMethods](DeprecatedMethods.md). 
+- [Macpine](https://github.com/beringresearch/macpine), [OrbStack](https://orbstack.dev), and [Tart](https://tart.run) may be viable alternatives to Lima incase it is giving you a headache. Further, if you would be okay using Ubuntu specificially instead of Alpine, [Multipass](https://multipass.run) is an extremely easy way to get Ubuntu VMs running. It does not support VirtioFS yet, but I think they are actively working on implementing this and support Apple's Virtualization.framework instead of QEMU. See [UbuntuDeprecatedMethods](UbuntuDeprecatedMethods.md). 
 - Docker using bind mounts(?) may be another way to achieve this. See [restic](https://forum.restic.net/t/cannot-mount-on-macos-with-macfuse-4-x/3338/5). Could be adapted for Borg by someone motivated.
