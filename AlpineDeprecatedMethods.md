@@ -64,7 +64,7 @@ This method uses Lima, QEMU, Alpine Linux, and VirtFS-9P.
    - BorgBackup users should download  `alpine-virt9p-borg.yaml`. Restic users should download  `alpine-virt9p-restic.yaml`.
 2. Follow the rest of the steps in the method for macOS13 and above.
 
-I had some issues with this, such as the mouse not showing up sometimes. If you are having issues, use one of the Ubuntu methods in [DeprecatedMethods](DeprecatedMethods.md)
+I had some issues with this, such as the mouse not showing up sometimes. If you are having issues, use one of the Ubuntu methods in [UbuntuDeprecatedMethods](UbuntuDeprecatedMethods.md)
 
 # Part 2)  Next, configure a one-click startup 'button' and auto-mount script. 
 
@@ -121,5 +121,5 @@ For large/complete restores:
 # Closing Notes
 This was the most straightforward way I could come up with to achieve what I wanted with on macOS. This was inspired by this [post](https://forum.restic.net/t/restic-mount-on-osx-and-windows-in-2021/4487/3). Things that could be done to improve this include setting up a BASH script to do much of the setup autimatically, or some of the alternatives/tweaks listed below.
 - This could potentially be even lighter-weight if you are more comfortable doing everything without a GUI. Skip the LXQt stuff by removing the provision section from the template and do everything from CLI. You just lose the ability to fully preview the content of files within a backup without first copying to the host machine. 
-- [Macpine](https://github.com/beringresearch/macpine), [OrbStack](https://orbstack.dev), and [Tart](https://tart.run) may be viable alternatives to Lima incase it is giving you a headache. Further, if you would be okay using Ubuntu specificially instead of Alpine, [Multipass](https://multipass.run) is an extremely easy way to get Ubuntu VMs running. It does not support VirtioFS yet, but I think they are actively working on implementing this and support Apple's Virtualization.framework instead of QEMU. See [DeprecatedMethods](DeprecatedMethods.md). 
+- [Macpine](https://github.com/beringresearch/macpine), [OrbStack](https://orbstack.dev), and [Tart](https://tart.run) may be viable alternatives to Lima incase it is giving you a headache. Further, if you would be okay using Ubuntu specificially instead of Alpine, [Multipass](https://multipass.run) is an extremely easy way to get Ubuntu VMs running. It does not support VirtioFS yet, but I think they are actively working on implementing this and support Apple's Virtualization.framework instead of QEMU. See [UbuntuDeprecatedMethods](UbuntuDeprecatedMethods.md). 
 - Docker using bind mounts(?) may be another way to achieve this. See [restic](https://forum.restic.net/t/cannot-mount-on-macos-with-macfuse-4-x/3338/5). Could be adapted for Borg by someone motivated.
