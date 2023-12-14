@@ -138,6 +138,8 @@ This command uses rsync to copy the desired file/directory to the VirtioFS/Virt-
 
 - But honestly, if you plan on extracting most, if not all files within a backup, it is much easier to just do this **natively** on macOS using Vorta for Borg/borg extract or restic restore rather than within the VM. 
 
+## Stopping
+When done, disconnect your Cyberduck browser by either just closing the program or by going to the menu bar > Go > Disconnect. To stop the VM, in a terminal window, type `limactl stop name-here`.
 
 # Closing Notes
 This was the most straightforward way I could come up with to achieve what I wanted with on macOS. This was inspired by this [post](https://forum.restic.net/t/restic-mount-on-osx-and-windows-in-2021/4487/3). Things that could be done to improve this include setting up a BASH script to do much of the setup autimatically, or some of the alternatives/tweaks listed below.
