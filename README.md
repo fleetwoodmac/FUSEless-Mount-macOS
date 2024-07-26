@@ -1,6 +1,8 @@
 # Mounting Borg backups or Restic repos without FUSE in macOS
 Workaround method for mounting Borg or Restic repos in macOS without FUSE. Specifically aimed for browsing backups to preview files within or restoring a portion of a backup rather than everything.
 
+Update: as of restic 0.17.0, restic finally supports using FUSE-T as an alternative to osxFUSE/macFUSE,see [restic changelog](https://github.com/restic/restic/releases/tag/v0.17.0). Leaving this repo as is for those that wish to stick with Borg or not use FUSE-T as it is closed source.
+
 # Preliminary Notes
 [Restic](https://restic.net/) and [BorgBackup](https://www.borgbackup.org/) are probably the most stable and well-developed FOSS backup tools for macOS that have a mounting capability for backup browsing. However, both use macFUSE for mounting on macOS, which requires reducing security due to its system kext requirement. 
 
